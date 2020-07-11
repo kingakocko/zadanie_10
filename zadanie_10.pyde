@@ -58,23 +58,28 @@ def mouseClicked():
         if mouseY >40 and mouseY <60:
             library.addBook(Madzia.returnBook())
  
-class testCaseOne(unittest.TestCase):
-    Madzia = Customer()
+class testCases(unittest.TestCase):
+    
     def testHasBook(self):
-        self.assertTrue(self.Madzia.haveBook == False)
-        
-class testCaseTwo(unittest.TestCase):
-    books = ["Naocznosc", "Sens Sztuki", "Harry Potter"]
-    library = Library(books)
-    def testUniqueBooks(self):
+        Madzia = Customer()
+        self.assertTrue(Madzia.haveBook == False)
+    
+    def testUniqueBooks(self): # to nie testuje napisanej klasy i jej metod, tylko funkcjonalność spawdzania, czy książka jest unikalna, której to funkcjonalności nie ma w testowanym kodzie i klasach
+        books = ["Naocznosc", "Sens Sztuki", "Harry Potter"]
+        library = Library(books)
         unique = True
-        for i in range(len(self.books)):
-            for j in range(len(self.books)):
+        for i in range(len(books)):
+            for j in range(len(books)):
                 if i == j:
                     continue
-                if self.books[i] == self.books[j]:
+                if books[i] == books[j]:
                     unique = False
                     break
             if not unique:
                 break
         self.assertTrue(unique)
+        
+if __name__ == '__main__':
+    unittest.main()
+    
+#1,25pkt
